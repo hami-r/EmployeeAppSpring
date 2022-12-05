@@ -30,4 +30,11 @@ public class EmployeeController {
     public String deletepage(){
         return "Delete page";
     }
+
+    @GetMapping("/edit")
+    public String editpage(){
+        return "Edit page";
+    }
+
+
 }
