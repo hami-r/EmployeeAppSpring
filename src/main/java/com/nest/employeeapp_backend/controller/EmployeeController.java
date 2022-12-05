@@ -20,4 +20,9 @@ public class EmployeeController {
     public String addpage(){
         return "Add page";
     }
+
+    @GetMapping("/search")
+    public String searchpage(){
+        return "Search page";
+    }
 }
