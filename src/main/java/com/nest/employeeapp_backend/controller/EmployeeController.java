@@ -25,4 +25,9 @@ public class EmployeeController {
     public String searchpage(){
         return "Search page";
     }
+
+    @GetMapping("/delete")
+    public String deletepage(){
+        return "Delete page";
+    }
 }
