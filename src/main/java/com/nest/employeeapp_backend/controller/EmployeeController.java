@@ -15,4 +15,9 @@ public class EmployeeController {
     public String viewpage(){
         return "View page";
     }
+
+    @GetMapping("/add")
+    public String addpage(){
+        return "Add page";
+    }
 }
