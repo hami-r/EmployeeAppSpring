@@ -10,4 +10,9 @@ public class EmployeeController {
     public String  homepage(){
         return "Welcome to my website";
     }
+
+    @GetMapping("/view")
+    public String viewpage(){
+        return "View page";
+    }
 }
