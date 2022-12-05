@@ -13,27 +13,27 @@ public class EmployeeController {
 
     @GetMapping("/view")
     public String viewpage(){
-        return "View page";
+        return "Welcome to View page";
     }
 
     @GetMapping("/add")
     public String addpage(){
-        return "Add page";
+        return "Welcome to Add page";
     }
 
     @GetMapping("/search")
     public String searchpage(){
-        return "Search page";
+        return "Welcome to Search page";
     }
 
     @GetMapping("/delete")
     public String deletepage(){
-        return "Delete page";
+        return "Welcome to Delete page";
     }
 
     @GetMapping("/edit")
     public String editpage(){
-        return "Edit page";
+        return "Welcome to Edit page";
     }
 
 
