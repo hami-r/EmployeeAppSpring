@@ -1,26 +1,30 @@
 package com.nest.employeeapp_backend.controller;
 
+import com.nest.employeeapp_backend.dao.EmployeeDao;
 import com.nest.employeeapp_backend.model.EmployeeModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class EmployeeController {
-
+    @Autowired
+    private EmployeeDao dao;
     @GetMapping("/")
     public String  homepage(){
         return "Welcome to my website";
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/view")
-    public String viewpage(){
-        return "Welcome to View page";
+    public List<EmployeeModel> viewpage(){
+        return (List<EmployeeModel>) dao.findAll();
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
-    public String addpage(@RequestBody EmployeeModel e){
+    public String addPage(@RequestBody EmployeeModel e){
         System.out.println("Name:" + e.getName());
         System.out.println("Employee Code:" + e.getEmployeeCode());
         System.out.println("Company Name:" + e.getCompanyName());
@@ -29,6 +33,7 @@ public class EmployeeController {
         System.out.println("Mobile No:" + e.getMobileNo());
         System.out.println("Username:" + e.getUsername());
         System.out.println("Password:" + e.getPassword());
+        dao.save(e);
         return "Employee added successfully";
     }
 
