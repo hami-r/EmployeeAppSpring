@@ -40,16 +40,21 @@ public class EmployeeController {
         return map;
     }
 
-    @PostMapping("/search")
-    public String searchpage(){
-        return "Welcome to Search page";
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/search", consumes = "application/json", produces = "application/json")
+    public List<EmployeeModel> searchPage(@RequestBody EmployeeModel e){
+        String empCode = String.valueOf(e.getEmployeeCode());
+        System.out.println(empCode);
+        return (List<EmployeeModel>) dao.searchEmployee(e.getEmployeeCode());
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/delete")
-    public String deletepage(){
+    public String delete(){
         return "Welcome to Delete page";
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/edit")
     public String editpage(){
         return "Welcome to Edit page";
