@@ -5,6 +5,7 @@ import com.nest.employeeapp_backend.model.EmployeeModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -24,7 +25,7 @@ public class EmployeeController {
 
     @CrossOrigin(origins = "*")
     @PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
-    public String addPage(@RequestBody EmployeeModel e){
+    public HashMap<String, String> addPage(@RequestBody EmployeeModel e){
         System.out.println("Name:" + e.getName());
         System.out.println("Employee Code:" + e.getEmployeeCode());
         System.out.println("Company Name:" + e.getCompanyName());
@@ -34,7 +35,9 @@ public class EmployeeController {
         System.out.println("Username:" + e.getUsername());
         System.out.println("Password:" + e.getPassword());
         dao.save(e);
-        return "Employee added successfully";
+        HashMap<String,String > map = new HashMap<>();
+        map.put("status","success");
+        return map;
     }
 
     @PostMapping("/search")
