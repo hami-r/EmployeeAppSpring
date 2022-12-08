@@ -20,7 +20,7 @@ public class EmployeeController {
     @CrossOrigin(origins = "*")
     @GetMapping("/view")
     public List<EmployeeModel> viewpage(){
-        return (List<EmployeeModel>) dao.findAll();
+        return (List<EmployeeModel>)dao.findAll();
     }
 
     @CrossOrigin(origins = "*")
@@ -49,9 +49,12 @@ public class EmployeeController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/delete")
-    public String delete(){
-        return "Welcome to Delete page";
+    @PostMapping(path = "/delete",consumes = "application/json",produces = "application/json")
+    public HashMap<String, String> delete(@RequestBody EmployeeModel e){
+        dao.deleteEmployee(e.getId());
+        HashMap<String,String > map = new HashMap<>();
+        map.put("status","success");
+        return map;
     }
 
     @CrossOrigin(origins = "*")
